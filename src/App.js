@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import TodoList from './TodoList';
 import './css/App.css';
 import Form from './Form'
-import { SSL_OP_CIPHER_SERVER_PREFERENCE } from 'constants';
-import { title } from 'process';
 
 class App extends Component{
 
@@ -23,9 +21,9 @@ class App extends Component{
           done: false
         },
       ]
-    this.state = {
-      todos: todos, 
-      countTodo: todos.length + 1,
+      this.state = {
+        todos: todos, 
+        countTodo: todos.length + 1,
     }
   }
 
@@ -33,8 +31,8 @@ class App extends Component{
     e.preventDefault();
     const title = e.target.title.value;
     const desc = e.target.desc.value;
-    const todos = this.state.todos.slice()
-    const countTodo = this.state.countTodo
+    const todos = this.state.todos.slice();
+    const countTodo = this.state.countTodo;
 
     todos.push({
       id: countTodo,
@@ -51,6 +49,16 @@ class App extends Component{
 
   }
 
+  setTodoStatus(clickTodo){
+    const todos = this.state.todos.slice();
+    const todo = todos[clickTodo.id -1];
+    todo.done = !todo.done;
+    todos[clickTodo.id -1] = todo;
+
+    this.setState({ todos });
+  }
+
+
   render(){
     return(
       <div className="app">
@@ -58,10 +66,11 @@ class App extends Component{
         <Form handleSubmit = {this.handleSubmit.bind(this)} />
         <TodoList 
           todos={this.state.todos}
+          setTodoStatus={this.setTodoStatus.bind(this)}
           />
       </div>
     );
   }
 }
 
-export default App;
+export default App
