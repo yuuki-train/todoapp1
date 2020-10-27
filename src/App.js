@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import TodoList from './TodoList';
+import './css/App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component{
+  constructor(){
+    super()
+    this.state = {
+      todos: [
+        {
+          id: 1,
+          tytle: "Hello, React!",
+          desc: "React始めました",
+          done: false
+        },
+        {
+          id: 2,
+          tytle: "Hello, Redux!",
+          desc: "Reduxも始めました",
+          done: false
+        },
+      ]
+    }
+  }
+  render(){
+    return(
+      <div className="app">
+        <h1>todoアプリを作ってみた</h1>
+        <TodoList 
+          todos ={this.state.todos}
+          />
+      </div>
+    );
+  }
 }
 
 export default App;
