@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import './css/form.css'
+import React, { Component } from 'react';
+import './css/form.css';
 
 class Form extends Component{
     render(){
@@ -12,7 +12,7 @@ class Form extends Component{
                     defaultValue="reactの勉強"//初期値
                     /><br/>
 
-                    <textarea name="disc" //テキストエリア
+                    <textarea name="desc" //テキストエリア
                     placeholder="説明を入力"
                     defaultValue="todoアプリを作っています！"
                     ></textarea><br/>
